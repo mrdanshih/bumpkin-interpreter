@@ -14,6 +14,8 @@ class Statement
 
 public:
     virtual void execute(ProgramState& state) const = 0;
+    virtual ~Statement() = default;
+    virtual std::string trace();
 
 private:
     int lineNumber;

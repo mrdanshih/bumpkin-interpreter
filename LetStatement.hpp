@@ -18,7 +18,9 @@ public:
 
     virtual void execute(ProgramState& state) const override;
 
-
+private:
+    std::string variableName;
+    int variableValue;
 };
 
 
