@@ -19,7 +19,9 @@ public:
     virtual void execute(ProgramState& state) const override;
 
 private:
+    bool referencesExistingVariable;
     std::string variableName;
+    std::string otherVariableName;
     int variableValue;
 };
 

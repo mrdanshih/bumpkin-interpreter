@@ -17,19 +17,6 @@ void ProgramState::setVariableValue(const std::string& varName, int value) {
     variableValues[varName] = value;
 }
 
-void ProgramState::setVariableValue(const std::string& varName, const std::string& fromVar) {
-    std::map<std::string, int>::iterator variablesIterator;
-    variablesIterator = variableValues.find(fromVar);
-
-    if(variablesIterator != variableValues.end()) {
-        // If found the variable name in the map, set the varName variable to
-        // the same value as the found variable name.
-        variableValues[varName] = variablesIterator->second;
-    }else{
-        throw std::out_of_range("No variable with name " + varName);
-    }
-}
-
 int ProgramState::getVariableValue(const std::string& varName) {
     std::map<std::string, int>::iterator variablesIterator;
     variablesIterator = variableValues.find(varName);
@@ -39,5 +26,8 @@ int ProgramState::getVariableValue(const std::string& varName) {
     }else{
         throw std::out_of_range("No variable with name " + varName);
     }
+}
 
+void ProgramState::incrementProgramCounter() {
+    programCounter++;
 }

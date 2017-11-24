@@ -17,9 +17,11 @@ public:
     void addStatement(Statement* statement);
 
     void setVariableValue(const std::string& varName, int value);
-    void setVariableValue(const std::string& varName, const std::string& fromVar);
+//    void setVariableValue(const std::string& varName, const std::string& fromVar);
 
     int getVariableValue(const std::string& varName);
+
+    void incrementProgramCounter();
 
 private:
     unsigned int programCounter;
