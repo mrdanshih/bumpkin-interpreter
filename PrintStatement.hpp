@@ -1,0 +1,14 @@
+//
+// Created by Daniel Shih on 11/23/17.
+//
+
+#ifndef BUMPKININTERPRETER_PRINTSTATEMENT_HPP
+#define BUMPKININTERPRETER_PRINTSTATEMENT_HPP
+
+
+class PrintStatement {
+
+};
+
+
+#endif //BUMPKININTERPRETER_PRINTSTATEMENT_HPP
