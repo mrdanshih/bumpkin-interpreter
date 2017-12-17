@@ -7,6 +7,7 @@ set(HEADER_FILES
         PrintStatement.hpp
         ProgramState.hpp
         Statement.hpp
+        EndStatement.hpp
         Type.hpp)
 set(SOURCE_FILES
         Interpreter.cpp
@@ -14,6 +15,7 @@ set(SOURCE_FILES
         Parser.cpp
         PrintStatement.cpp
         ProgramState.cpp
+        EndStatement.cpp
         Statement.cpp)
 
 add_library(interpreter STATIC ${SOURCE_FILES} ${HEADER_FILES})

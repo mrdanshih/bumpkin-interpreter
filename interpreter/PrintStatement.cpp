@@ -15,6 +15,7 @@ PrintStatement::PrintStatement(std::string variableName):
 }
 
 void PrintStatement::execute(ProgramState& state) const {
+    Statement::execute(state);
     switch(itemType) {
         case VALUE:
             std::cout << value << std::endl;

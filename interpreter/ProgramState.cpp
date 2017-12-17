@@ -4,7 +4,10 @@
 
 #include "ProgramState.hpp"
 
-ProgramState::ProgramState(): programCounter{0} {
+
+ProgramState::ProgramState(): programCounter{1}{
+    //Store null in 0th cell
+    statements.push_back(nullptr);
 
 }
 
@@ -31,3 +34,21 @@ int ProgramState::getVariableValue(const std::string& varName) {
 void ProgramState::incrementProgramCounter() {
     programCounter++;
 }
+
+void ProgramState::setProgramCounter(unsigned int line) {
+    programCounter = line;
+}
+
+void ProgramState::endProgram() {
+    // Make program counter == size, which means the end of program.
+    programCounter = statements.size();
+}
+
+bool ProgramState::atProgramEnd() {
+    return programCounter >= statements.size();
+}
+
+Statement* ProgramState::getCurrentStatement() {
+    return statements.at(programCounter);
+}
+

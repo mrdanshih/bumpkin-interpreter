@@ -7,3 +7,7 @@
 std::string Statement::trace() {
     return std::to_string(lineNumber) + statementText;
 }
+
+void Statement::execute(ProgramState& state) const{
+    state.incrementProgramCounter();
+}

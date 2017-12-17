@@ -6,14 +6,13 @@
 #define BUMPKININTERPRETER_STATEMENT_HPP
 
 #include <string>
-
-class ProgramState;
+#include "ProgramState.hpp"
 
 class Statement
 {
 
 public:
-    virtual void execute(ProgramState& state) const = 0;
+    virtual void execute(ProgramState& state) const;
     virtual ~Statement() = default;
     virtual std::string trace();
 

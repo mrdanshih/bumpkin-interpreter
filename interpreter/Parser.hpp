@@ -8,12 +8,14 @@
 #include <string>
 #include <istream>
 #include "ProgramState.hpp"
+#include "LetStatement.hpp"
+#include "PrintStatement.hpp"
 
 class Parser
 {
 public:
-    Parser(std::istream* inputStream);
-    ProgramState getProgramState();
+    Parser();
+    ProgramState getProgramState(std::istream* inputStream);
 };
 
 #endif //BUMPKININTERPRETER_PARSER_HPP

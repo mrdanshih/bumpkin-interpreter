@@ -16,6 +16,8 @@ LetStatement::LetStatement(std::string variableName, std::string otherVariable):
 }
 
 void LetStatement::execute(ProgramState& state) const {
+    Statement::execute(state);
+
     switch(rValueType) {
         case VALUE:
             state.setVariableValue(variableName, variableValue);

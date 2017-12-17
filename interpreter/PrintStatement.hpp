@@ -7,7 +7,6 @@
 
 #include <string>
 #include "Statement.hpp"
-#include "ProgramState.hpp"
 #include "Type.hpp"
 
 class PrintStatement: public Statement

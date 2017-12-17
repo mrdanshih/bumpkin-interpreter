@@ -6,7 +6,6 @@
 #define BUMPKININTERPRETER_LETSTATEMENT_HPP
 
 #include "Statement.hpp"
-#include "ProgramState.hpp"
 #include "Type.hpp"
 
 class LetStatement: public Statement
