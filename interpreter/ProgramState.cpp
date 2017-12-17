@@ -11,6 +11,13 @@ ProgramState::ProgramState(): programCounter{1}{
 
 }
 
+ProgramState::~ProgramState() {
+    // Need to delete all the dynamically allocated Statements
+    for(Statement* statement: statements) {
+        delete statement;
+    }
+}
+
 void ProgramState::addStatement(Statement* statement) {
     statements.push_back(statement);
 }
@@ -41,7 +48,7 @@ void ProgramState::setProgramCounter(unsigned int line) {
 
 void ProgramState::endProgram() {
     // Make program counter == size, which means the end of program.
-    programCounter = statements.size();
+    programCounter = (int) statements.size();
 }
 
 bool ProgramState::atProgramEnd() {

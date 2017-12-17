@@ -9,6 +9,7 @@
 #include <map>
 #include <vector>
 #include <stack>
+#include <iostream>
 
 class Statement;
 
@@ -16,6 +17,8 @@ class ProgramState
 {
 public:
     ProgramState();
+    ~ProgramState();
+
     void addStatement(Statement* statement);
     void setVariableValue(const std::string& varName, int value);
     int getVariableValue(const std::string& varName);

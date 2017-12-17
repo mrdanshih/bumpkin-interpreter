@@ -34,8 +34,12 @@ namespace {
         } else if (command == "PRINT") {
             std::string rvalue = tokens.at(1);
             return (has_only_digits(rvalue) ? new PrintStatement(std::stoi(rvalue)) : new PrintStatement(rvalue));
+        } else if (command == "END") {
+            return new EndStatement();
         }
+        throw std::string("This shouldn't happen!");
     }
+
 }
 
 Parser::Parser() {
@@ -48,11 +52,13 @@ ProgramState Parser::getProgramState(std::istream* inputStream) {
 
     while(std::getline(*inputStream, line)) {
         // For each line, parse into tokens.
-        std::vector<std::string> statementTokens = getTokensForStatement(line);
+        if(line.size() > 0) {
+            std::vector<std::string> statementTokens = getTokensForStatement(line);
 
-        // Based on tokens[0], make a new statement.
-        Statement* statement = getStatementFromTokens(statementTokens);
-        state.addStatement(statement);
+            // Based on tokens[0], make a new statement.
+            Statement* statement = getStatementFromTokens(statementTokens);
+            state.addStatement(statement);
+        }
     }
 
     return state;

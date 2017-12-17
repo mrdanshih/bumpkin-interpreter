@@ -10,6 +10,7 @@
 #include "ProgramState.hpp"
 #include "LetStatement.hpp"
 #include "PrintStatement.hpp"
+#include "EndStatement.hpp"
 
 class Parser
 {

@@ -16,6 +16,7 @@ public:
     virtual ~Statement() = default;
     virtual std::string trace();
 
+
 private:
     int lineNumber;
     std::string statementText;
