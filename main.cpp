@@ -8,8 +8,13 @@
 #include "interpreter/Interpreter.hpp"
 
 int main() {
-    Interpreter interpreter{"/Users/danielshih/CLionProjects/BumpkinInterpreter/test666.txt"};
-    interpreter.runProgram();
+    try {
+        Interpreter interpreter{"/Users/danielshih/CLionProjects/BumpkinInterpreter/input_files/basic_prog.txt"};
+        interpreter.runProgram();
+    } catch (std::string s) {
+        std::cout << s << std::endl;
+    }
+
 
     return 0;
 }

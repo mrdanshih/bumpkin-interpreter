@@ -8,6 +8,8 @@ set(HEADER_FILES
         ProgramState.hpp
         Statement.hpp
         EndStatement.hpp
+        AddStatement.hpp
+        SubStatement.hpp
         Type.hpp)
 set(SOURCE_FILES
         Interpreter.cpp
@@ -16,6 +18,8 @@ set(SOURCE_FILES
         PrintStatement.cpp
         ProgramState.cpp
         EndStatement.cpp
+        AddStatement.cpp
+        SubStatement.cpp
         Statement.cpp)
 
 add_library(interpreter STATIC ${SOURCE_FILES} ${HEADER_FILES})

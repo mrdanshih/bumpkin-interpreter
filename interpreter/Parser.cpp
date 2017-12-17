@@ -9,7 +9,13 @@
 
 namespace {
     bool has_only_digits(const std::string& s) {
-        return s.find_first_not_of("0123456789") == std::string::npos;
+        std::string stringToCheck = s;
+
+        if(s.at(0) == '-') {
+            stringToCheck.erase(0);
+        }
+
+        return stringToCheck.find_first_not_of("0123456789") == std::string::npos;
     }
 
     std::vector<std::string> getTokensForStatement(const std::string& line) {
@@ -26,17 +32,34 @@ namespace {
 
     Statement* getStatementFromTokens(const std::vector<std::string>& tokens) {
         std::string command = tokens.at(0);
-        if(command == "LET") {
+        //Separate into two argument commands? three argument commands? etc.. else its too reptitive!
+
+        if (command == "LET") {
             std::string lvalue = tokens.at(1);
             std::string rvalue = tokens.at(2);
-            return (has_only_digits(rvalue) ? new LetStatement(lvalue, std::stoi(rvalue)) : new LetStatement(lvalue, rvalue));
+            return (has_only_digits(rvalue) ? new LetStatement(lvalue, std::stoi(rvalue)) :
+                    new LetStatement(lvalue, rvalue));
+
+        } else if (command == "ADD") {
+            std::string lvalue = tokens.at(1);
+            std::string rvalue = tokens.at(2);
+            return (has_only_digits(rvalue) ? new AddStatement(lvalue, std::stoi(rvalue)) :
+                    new AddStatement(lvalue, rvalue));
+
+        } else if (command == "SUB") {
+            std::string lvalue = tokens.at(1);
+            std::string rvalue = tokens.at(2);
+            return (has_only_digits(rvalue) ? new SubStatement(lvalue, std::stoi(rvalue)) :
+                    new SubStatement(lvalue, rvalue));
 
         } else if (command == "PRINT") {
             std::string rvalue = tokens.at(1);
             return (has_only_digits(rvalue) ? new PrintStatement(std::stoi(rvalue)) : new PrintStatement(rvalue));
-        } else if (command == "END") {
+
+        } else if (command == "END" || command == ".") {
             return new EndStatement();
         }
+
         throw std::string("This shouldn't happen!");
     }
 

@@ -11,6 +11,8 @@
 #include "LetStatement.hpp"
 #include "PrintStatement.hpp"
 #include "EndStatement.hpp"
+#include "AddStatement.hpp"
+#include "SubStatement.hpp"
 
 class Parser
 {
