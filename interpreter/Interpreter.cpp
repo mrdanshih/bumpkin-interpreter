@@ -3,6 +3,7 @@
 //
 
 #include "Interpreter.hpp"
+#include "BumpkinException.hpp"
 
 Interpreter::Interpreter(const std::string &fileName){
     programFile.open(fileName);
@@ -18,6 +19,11 @@ void Interpreter::runProgram() {
 
     while(!state.atProgramEnd()) {
         Statement* statement = state.getCurrentStatement();
-        statement->execute(state);
+        try {
+            statement->execute(state);
+        } catch (BumpkinException& e) {
+            std::cout << e.getMessage() << std::endl;
+            return;
+        }
     }
 }

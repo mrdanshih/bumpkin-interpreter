@@ -10,6 +10,7 @@
 #include <vector>
 #include <stack>
 #include <iostream>
+#include "BumpkinException.hpp"
 
 class Statement;
 
@@ -24,6 +25,9 @@ public:
     int getVariableValue(const std::string& varName);
     void incrementProgramCounter();
     void setProgramCounter(unsigned int line);
+    void setProgramCounter(const std::string& label);
+    void setLineLabel(unsigned int lineNumber, const std::string& label);
+    unsigned int getLineNumber(const std::string& label);
     void endProgram();
 
     Statement* getCurrentStatement();
@@ -32,7 +36,7 @@ public:
 private:
     unsigned int programCounter;
     std::map<std::string, int> variableValues;
-    std::map<std::string, int> labelToLineNumbers;
+    std::map<std::string, unsigned int> labelToLineNumbers;
 
     // Store stack of previous line numbers
     std::stack<int> subroutineStack;

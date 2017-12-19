@@ -5,8 +5,8 @@
 #ifndef BUMPKININTERPRETER_SUBSTATEMENT_HPP
 #define BUMPKININTERPRETER_SUBSTATEMENT_HPP
 
-#include "Statement.hpp"
-#include "Type.hpp"
+#include "../Statement.hpp"
+#include "../Type.hpp"
 
 class SubStatement: public Statement {
 public:

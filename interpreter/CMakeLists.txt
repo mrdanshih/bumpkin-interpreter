@@ -8,9 +8,9 @@ set(HEADER_FILES
         ProgramState.hpp
         Statement.hpp
         EndStatement.hpp
-        AddStatement.hpp
-        SubStatement.hpp
-        Type.hpp)
+        arithmetic/AddStatement.hpp
+        arithmetic/SubStatement.hpp
+        Type.hpp arithmetic/MultStatement.cpp arithmetic/MultStatement.hpp arithmetic/DivStatement.cpp arithmetic/DivStatement.hpp BumpkinException.cpp BumpkinException.hpp)
 set(SOURCE_FILES
         Interpreter.cpp
         LetStatement.cpp
@@ -18,8 +18,8 @@ set(SOURCE_FILES
         PrintStatement.cpp
         ProgramState.cpp
         EndStatement.cpp
-        AddStatement.cpp
-        SubStatement.cpp
-        Statement.cpp)
+        arithmetic/AddStatement.cpp
+        arithmetic/SubStatement.cpp
+        Statement.cpp arithmetic/MultStatement.cpp arithmetic/MultStatement.hpp arithmetic/DivStatement.cpp arithmetic/DivStatement.hpp BumpkinException.cpp BumpkinException.hpp)
 
 add_library(interpreter STATIC ${SOURCE_FILES} ${HEADER_FILES})

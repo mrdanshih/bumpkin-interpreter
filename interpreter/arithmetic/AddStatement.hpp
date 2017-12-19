@@ -5,8 +5,8 @@
 #ifndef BUMPKININTERPRETER_ADDSTATEMENT_HPP
 #define BUMPKININTERPRETER_ADDSTATEMENT_HPP
 
-#include "Statement.hpp"
-#include "Type.hpp"
+#include "../Statement.hpp"
+#include "../Type.hpp"
 
 
 class AddStatement: public Statement {

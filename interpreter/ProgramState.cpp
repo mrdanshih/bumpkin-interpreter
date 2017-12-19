@@ -46,6 +46,22 @@ void ProgramState::setProgramCounter(unsigned int line) {
     programCounter = line;
 }
 
+void ProgramState::setProgramCounter(const std::string& label) {
+    if(labelToLineNumbers.find(label) == labelToLineNumbers.end()) {
+        throw BumpkinException("BUMPKIN RUNTIME ERROR: Non-existent label " + label);
+    }
+    programCounter = labelToLineNumbers.at(label);
+}
+
+
+void ProgramState::setLineLabel(unsigned int lineNumber, const std::string& label) {
+    labelToLineNumbers[label] = lineNumber;
+}
+
+unsigned int ProgramState::getLineNumber(const std::string& label) {
+    return labelToLineNumbers.at(label);
+}
+
 void ProgramState::endProgram() {
     // Make program counter == size, which means the end of program.
     programCounter = (int) statements.size();
