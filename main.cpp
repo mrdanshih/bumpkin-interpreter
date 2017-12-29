@@ -9,7 +9,7 @@
 
 int main() {
     try {
-        Interpreter interpreter{"/Users/danielshih/CLionProjects/BumpkinInterpreter/input_files/basic_prog.txt"};
+        Interpreter interpreter{"/Users/danielshih/CLionProjects/BumpkinInterpreter/input_files/goto_test.txt"};
         interpreter.runProgram();
     } catch (std::string s) {
         std::cout << s << std::endl;

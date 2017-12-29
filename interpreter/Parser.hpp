@@ -14,6 +14,7 @@
 #include "LetStatement.hpp"
 #include "PrintStatement.hpp"
 #include "EndStatement.hpp"
+#include "GoToStatement.hpp"
 #include "arithmetic/AddStatement.hpp"
 #include "arithmetic/SubStatement.hpp"
 #include "arithmetic/MultStatement.hpp"

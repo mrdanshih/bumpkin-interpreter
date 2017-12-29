@@ -29,7 +29,7 @@ namespace {
         std::string command = tokens.at(0);
         //Separate into two argument commands? three argument commands? etc.. else its too reptitive!
         std::set<std::string> twoArgumentCommands = {"LET", "ADD", "SUB", "MULT", "DIV"};
-        std::set<std::string> oneArgumentComnands = {"PRINT", "GOTO", "GOSUB"};
+        std::set<std::string> oneArgumentCommands = {"PRINT", "GOTO", "GOSUB"};
 
         if(twoArgumentCommands.find(command) != twoArgumentCommands.end()) {
             std::string lvalue = tokens.at(1);
@@ -56,10 +56,13 @@ namespace {
                         new DivStatement(lvalue, rvalue));
             }
 
-        } else if (oneArgumentComnands.find(command) != twoArgumentCommands.end()) {
+        } else if (oneArgumentCommands.find(command) != oneArgumentCommands.end()) {
             std::string rvalue = tokens.at(1);
             if (command == "PRINT") {
                 return (has_only_digits(rvalue) ? new PrintStatement(std::stoi(rvalue)) : new PrintStatement(rvalue));
+
+            } else if (command == "GOTO") {
+                return (has_only_digits(rvalue) ? new GoToStatement((unsigned int) std::stoi(rvalue)) : new GoToStatement(rvalue));
             }
 
         } else if (command == "END" || command == ".") {

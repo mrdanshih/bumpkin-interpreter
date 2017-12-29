@@ -97,8 +97,17 @@ TEST(basic_tests, test_labeling) {
     ProgramState s = test.getProgramState(&iss);
     ASSERT_EQ(s.getLineNumber("LABEL"), 1);
     ASSERT_EQ(s.getLineNumber("BLAH"), 2);
+}
 
+TEST(basic_tests, test_goto) {
+    Parser test;
+    std::string goToTest = "LET A 1\nGOTO 4\nLET A 2\nLET A 10";
+    std::istringstream iss(goToTest);
+    ProgramState s = test.getProgramState(&iss);
 
+    s.getCurrentStatement()->execute(s);
+    s.getCurrentStatement()->execute(s);
+    s.getCurrentStatement()->execute(s);
 
-
+    ASSERT_EQ(s.getVariableValue("A"), 10);
 }
