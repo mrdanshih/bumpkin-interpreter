@@ -15,10 +15,12 @@
 #include "PrintStatement.hpp"
 #include "EndStatement.hpp"
 #include "GoToStatement.hpp"
+#include "IfStatement.hpp"
 #include "arithmetic/AddStatement.hpp"
 #include "arithmetic/SubStatement.hpp"
 #include "arithmetic/MultStatement.hpp"
 #include "arithmetic/DivStatement.hpp"
+#include "enumerations/RelationalOperator.hpp"
 
 class Parser
 {

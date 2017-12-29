@@ -26,6 +26,7 @@ public:
     void incrementProgramCounter();
     void setProgramCounter(unsigned int line);
     void setProgramCounter(const std::string& label);
+    unsigned int getProgramCounter();
     void setLineLabel(unsigned int lineNumber, const std::string& label);
     unsigned int getLineNumber(const std::string& label);
     void endProgram();

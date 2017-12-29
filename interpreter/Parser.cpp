@@ -25,45 +25,101 @@ namespace {
         return statementTokens;
     }
 
+
+    Statement* getTwoArgumentStatement(std::string& command, std::string& lvalue, std::string& rvalue) {
+        if (command == "LET") {
+            return (has_only_digits(rvalue) ? new LetStatement(lvalue, std::stoi(rvalue)) :
+                    new LetStatement(lvalue, rvalue));
+
+        } else if (command == "ADD") {
+            return (has_only_digits(rvalue) ? new AddStatement(lvalue, std::stoi(rvalue)) :
+                    new AddStatement(lvalue, rvalue));
+
+        } else if (command == "SUB") {
+            return (has_only_digits(rvalue) ? new SubStatement(lvalue, std::stoi(rvalue)) :
+                    new SubStatement(lvalue, rvalue));
+
+        } else if (command == "MULT") {
+            return (has_only_digits(rvalue) ? new MultStatement(lvalue, std::stoi(rvalue)) :
+                    new MultStatement(lvalue, rvalue));
+
+        } else if (command == "DIV") {
+            return (has_only_digits(rvalue) ? new DivStatement(lvalue, std::stoi(rvalue)) :
+                    new DivStatement(lvalue, rvalue));
+        }
+
+        throw std::string("This shouldn't happen!");
+    }
+
+    Statement* getOneArgumentStatement(std::string& command, std::string& rvalue) {
+        if (command == "PRINT") {
+            return (has_only_digits(rvalue) ? new PrintStatement(std::stoi(rvalue)) : new PrintStatement(rvalue));
+
+        } else if (command == "GOTO") {
+            return (has_only_digits(rvalue) ? new GoToStatement((unsigned int) std::stoi(rvalue)) : new GoToStatement(rvalue));
+        }
+    }
+
+    RelationalOperator getRelationalOperator(std::string& stringOperator) {
+        if(stringOperator == "=") {
+            return RelationalOperator::EQ;
+
+        } else if (stringOperator == "<>") {
+            return RelationalOperator::NOT_EQ;
+
+        } else if (stringOperator == "<") {
+            return RelationalOperator::LESS;
+
+        } else if (stringOperator == "<=") {
+            return RelationalOperator::LESS_EQ;
+
+        } else if (stringOperator == ">") {
+            return RelationalOperator::GREATER;
+
+        } else {
+            return RelationalOperator::GREATER_EQ;
+        }
+    }
+
+    IfStatement* generateIfStatement(std::string& value1, std::string& op,
+                                     std::string& value2, std::string lineLabel) {
+
+        ComparisonValue compValue1 = (has_only_digits(value1) ? ComparisonValue{std::stoi(value1)} : ComparisonValue{value1});
+        ComparisonValue compValue2 = (has_only_digits(value2) ? ComparisonValue{std::stoi(value2)} : ComparisonValue{value2});
+
+        RelationalOperator relationalOp = getRelationalOperator(op);
+
+        if(has_only_digits(lineLabel)) {
+            return new IfStatement(compValue1, relationalOp, compValue2, (unsigned int) std::stoi(lineLabel));
+        } else {
+            return new IfStatement(compValue1, relationalOp, compValue2, lineLabel);
+        }
+    }
+
     Statement* getStatementFromTokens(const std::vector<std::string>& tokens) {
         std::string command = tokens.at(0);
         //Separate into two argument commands? three argument commands? etc.. else its too reptitive!
         std::set<std::string> twoArgumentCommands = {"LET", "ADD", "SUB", "MULT", "DIV"};
         std::set<std::string> oneArgumentCommands = {"PRINT", "GOTO", "GOSUB"};
 
-        if(twoArgumentCommands.find(command) != twoArgumentCommands.end()) {
+        if (twoArgumentCommands.find(command) != twoArgumentCommands.end()) {
             std::string lvalue = tokens.at(1);
             std::string rvalue = tokens.at(2);
 
-            if (command == "LET") {
-                return (has_only_digits(rvalue) ? new LetStatement(lvalue, std::stoi(rvalue)) :
-                        new LetStatement(lvalue, rvalue));
-
-            } else if (command == "ADD") {
-                return (has_only_digits(rvalue) ? new AddStatement(lvalue, std::stoi(rvalue)) :
-                        new AddStatement(lvalue, rvalue));
-
-            } else if (command == "SUB") {
-                return (has_only_digits(rvalue) ? new SubStatement(lvalue, std::stoi(rvalue)) :
-                        new SubStatement(lvalue, rvalue));
-
-            } else if (command == "MULT") {
-                return (has_only_digits(rvalue) ? new MultStatement(lvalue, std::stoi(rvalue)) :
-                        new MultStatement(lvalue, rvalue));
-
-            } else if (command == "DIV") {
-                return (has_only_digits(rvalue) ? new DivStatement(lvalue, std::stoi(rvalue)) :
-                        new DivStatement(lvalue, rvalue));
-            }
+            return getTwoArgumentStatement(command, lvalue, rvalue);
 
         } else if (oneArgumentCommands.find(command) != oneArgumentCommands.end()) {
             std::string rvalue = tokens.at(1);
-            if (command == "PRINT") {
-                return (has_only_digits(rvalue) ? new PrintStatement(std::stoi(rvalue)) : new PrintStatement(rvalue));
 
-            } else if (command == "GOTO") {
-                return (has_only_digits(rvalue) ? new GoToStatement((unsigned int) std::stoi(rvalue)) : new GoToStatement(rvalue));
-            }
+            return getOneArgumentStatement(command, rvalue);
+
+        } else if (command == "IF") {
+            std::string value1 = tokens.at(1);
+            std::string op = tokens.at(2);
+            std::string value2 = tokens.at(3);
+            std::string line = tokens.at(5);
+
+            return generateIfStatement(value1, op, value2, line);
 
         } else if (command == "END" || command == ".") {
             return new EndStatement();

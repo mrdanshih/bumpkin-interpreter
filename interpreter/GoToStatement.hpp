@@ -6,19 +6,20 @@
 #define BUMPKININTERPRETER_GOTOSTATEMENT_HPP
 
 #include "Statement.hpp"
+#include "enumerations/LineLabelType.hpp"
 
 class GoToStatement: public Statement {
 public:
-    //Set line to
+    //Set line to lineNumber
     GoToStatement(unsigned int lineNumber);
 
-    //Set a variable to the value of another variable
+    //Set line to label
     GoToStatement(std::string lineLabel);
 
     virtual void execute(ProgramState& state) const override;
 
 private:
-    bool isTextLabel;
+    LineLabelType type;
     unsigned int lineNumber;
     std::string lineLabel;
 };

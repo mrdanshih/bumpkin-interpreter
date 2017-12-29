@@ -7,7 +7,7 @@
 
 #include <string>
 #include "Statement.hpp"
-#include "Type.hpp"
+#include "enumerations/VariableType.hpp"
 
 class PrintStatement: public Statement
 {
@@ -18,7 +18,7 @@ public:
 private:
     std::string variableName;
     int value;
-    Type itemType;
+    VariableType itemType;
 };
 
 

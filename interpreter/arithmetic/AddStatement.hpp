@@ -6,7 +6,7 @@
 #define BUMPKININTERPRETER_ADDSTATEMENT_HPP
 
 #include "../Statement.hpp"
-#include "../Type.hpp"
+#include "../enumerations/VariableType.hpp"
 
 
 class AddStatement: public Statement {
@@ -20,7 +20,7 @@ public:
     virtual void execute(ProgramState& state) const override;
 
 private:
-    Type rValueType;
+    VariableType rValueType;
     std::string targetVariableName;
     std::string otherVariableName;
     int addendValue;

@@ -6,7 +6,7 @@
 #define BUMPKININTERPRETER_LETSTATEMENT_HPP
 
 #include "Statement.hpp"
-#include "Type.hpp"
+#include "enumerations/VariableType.hpp"
 
 class LetStatement: public Statement
 {
@@ -20,7 +20,7 @@ public:
     virtual void execute(ProgramState& state) const override;
 
 private:
-    Type rValueType;
+    VariableType rValueType;
     std::string variableName;
     std::string otherVariableName;
     int variableValue;

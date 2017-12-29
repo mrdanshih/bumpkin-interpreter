@@ -111,3 +111,43 @@ TEST(basic_tests, test_goto) {
 
     ASSERT_EQ(s.getVariableValue("A"), 10);
 }
+
+TEST(basic_tests, test_if_statement_values) {
+    Parser test;
+    std::string ifTestOne = "IF 5 = 5 THEN 4\nLET A 2\nEND\nLET A 10";
+    std::istringstream iss(ifTestOne);
+    ProgramState s = test.getProgramState(&iss);
+
+    while(!s.atProgramEnd()) {
+        std::cout << s.getProgramCounter() << std::endl;
+        s.getCurrentStatement()->execute(s);
+    }
+
+    ASSERT_EQ(s.getVariableValue("A"), 10);
+
+    std::string ifTestTwo = "IF 5 = 6 THEN 4\nLET A 2\nEND\nLET A 10";
+    std::istringstream iss2(ifTestTwo);
+    ProgramState s2 = test.getProgramState(&iss2);
+
+    while(!s2.atProgramEnd()) {
+        std::cout << s2.getProgramCounter() << std::endl;
+        s2.getCurrentStatement()->execute(s2);
+    }
+
+    ASSERT_EQ(s2.getVariableValue("A"), 2);
+}
+
+
+TEST(basic_tests, test_if_statement_variables) {
+    Parser test;
+    std::string ifTestOne = "LET X 9\nLET Y 10\n IF X < Y THEN 6\nLET A 2\nEND\nLET A 10";
+    std::istringstream iss(ifTestOne);
+    ProgramState s = test.getProgramState(&iss);
+
+    while(!s.atProgramEnd()) {
+        std::cout << s.getProgramCounter() << std::endl;
+        s.getCurrentStatement()->execute(s);
+    }
+
+    ASSERT_EQ(s.getVariableValue("A"), 10);
+}

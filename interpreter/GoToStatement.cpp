@@ -5,17 +5,17 @@
 #include "GoToStatement.hpp"
 
 GoToStatement::GoToStatement(std::string lineLabel):
-        isTextLabel{true}, lineLabel{lineLabel}
+        type{LABEL}, lineLabel{lineLabel}
 {
 }
 
 GoToStatement::GoToStatement(unsigned int lineNumber):
-    isTextLabel{false}, lineNumber{lineNumber}
+    type{NUMBER}, lineNumber{lineNumber}
 {
 }
 
 void GoToStatement::execute(ProgramState &state) const {
-    if(isTextLabel) {
+    if(type == LABEL) {
         state.setProgramCounter(lineLabel);
     } else {
         state.setProgramCounter(lineNumber);

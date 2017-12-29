@@ -6,7 +6,7 @@
 #define BUMPKININTERPRETER_MULTSTATEMENT_HPP
 
 #include "../Statement.hpp"
-#include "../Type.hpp"
+#include "../enumerations/VariableType.hpp"
 
 class MultStatement: public Statement {
 public:
@@ -19,7 +19,7 @@ public:
     virtual void execute(ProgramState& state) const override;
 
 private:
-    Type rValueType;
+    VariableType rValueType;
     std::string targetVariableName;
     std::string otherVariableName;
     int multiplicandValue;

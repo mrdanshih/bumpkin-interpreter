@@ -364,7 +364,7 @@ ASSERT_HRESULT_SUCCEEDED(shell->ShellExecute(CComBSTR(url), empty, empty, empty,
 
 _Availability_: Windows.
 
-## Type Assertions ##
+## VariableType Assertions ##
 
 You can call the function
 ```
@@ -1346,7 +1346,7 @@ You can see `samples/sample6_unittest.cc` for a complete example.
 _Availability:_ Linux, Windows (requires MSVC 8.0 or above), Mac;
 since version 1.1.0.
 
-# Type-Parameterized Tests #
+# VariableType-Parameterized Tests #
 
 _Type-parameterized tests_ are like typed tests, except that they
 don't require you to know the list of types ahead of time.  Instead,
