@@ -22,6 +22,10 @@ void ProgramState::addStatement(Statement* statement) {
     statements.push_back(statement);
 }
 
+Statement* ProgramState::getCurrentStatement() {
+    return statements.at(programCounter);
+}
+
 void ProgramState::setVariableValue(const std::string& varName, int value) {
     // Store the value in the variableValues map
     variableValues[varName] = value;
@@ -43,6 +47,10 @@ void ProgramState::incrementProgramCounter() {
 }
 
 void ProgramState::setProgramCounter(unsigned int line) {
+    if(line < 1 || line > statements.size()) {
+        throw BumpkinException("Line number out of bounds");
+    }
+
     programCounter = line;
 }
 
@@ -65,6 +73,19 @@ unsigned int ProgramState::getLineNumber(const std::string& label) {
     return labelToLineNumbers.at(label);
 }
 
+void ProgramState::saveCurrentProgramCounter() {
+    subroutineStack.push(programCounter);
+}
+
+void ProgramState::restoreMostRecentProgramCounter() {
+    programCounter = subroutineStack.top();
+    subroutineStack.pop();
+}
+
+bool ProgramState::hasSavedProgramCounters() {
+    return !subroutineStack.empty();
+}
+
 void ProgramState::endProgram() {
     // Make program counter == size, which means the end of program.
     programCounter = (int) statements.size();
@@ -74,7 +95,4 @@ bool ProgramState::atProgramEnd() {
     return programCounter >= statements.size();
 }
 
-Statement* ProgramState::getCurrentStatement() {
-    return statements.at(programCounter);
-}
 

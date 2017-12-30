@@ -2,8 +2,8 @@
 #include <sstream>
 #include <fstream>
 #include "interpreter/ProgramState.hpp"
-#include "interpreter/LetStatement.hpp"
-#include "interpreter/PrintStatement.hpp"
+#include "interpreter/control_statements/LetStatement.hpp"
+#include "interpreter/control_statements/PrintStatement.hpp"
 #include "interpreter/Parser.hpp"
 #include "interpreter/Interpreter.hpp"
 

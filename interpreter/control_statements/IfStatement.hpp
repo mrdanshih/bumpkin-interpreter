@@ -5,10 +5,10 @@
 #ifndef BUMPKININTERPRETER_IFSTATEMENT_HPP
 #define BUMPKININTERPRETER_IFSTATEMENT_HPP
 
-#include "Statement.hpp"
-#include "enumerations/RelationalOperator.hpp"
-#include "enumerations/LineLabelType.hpp"
-#include "ComparisonValue.hpp"
+#include "../Statement.hpp"
+#include "../enumerations/RelationalOperator.hpp"
+#include "../enumerations/LineLabelType.hpp"
+#include "../ComparisonValue.hpp"
 
 class IfStatement: public Statement {
 public:

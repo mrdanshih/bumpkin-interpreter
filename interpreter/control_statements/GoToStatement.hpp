@@ -5,8 +5,8 @@
 #ifndef BUMPKININTERPRETER_GOTOSTATEMENT_HPP
 #define BUMPKININTERPRETER_GOTOSTATEMENT_HPP
 
-#include "Statement.hpp"
-#include "enumerations/LineLabelType.hpp"
+#include "../Statement.hpp"
+#include "../enumerations/LineLabelType.hpp"
 
 class GoToStatement: public Statement {
 public:

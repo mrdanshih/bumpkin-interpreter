@@ -52,7 +52,6 @@ IfStatement::IfStatement(ComparisonValue leftValue, RelationalOperator compareOp
 void IfStatement::execute(ProgramState& state) const {
     int leftActual = getActualValue(leftVal, state);
     int rightActual = getActualValue(rightVal, state);
-    bool boolResult = getTruthValue(leftActual, rightActual, compareOperator);
 
     if(getTruthValue(leftActual, rightActual, compareOperator)) {
         if(lineLabelType == LABEL) {

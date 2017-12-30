@@ -6,8 +6,8 @@
 #define BUMPKININTERPRETER_PRINTSTATEMENT_HPP
 
 #include <string>
-#include "Statement.hpp"
-#include "enumerations/VariableType.hpp"
+#include "../Statement.hpp"
+#include "../enumerations/VariableType.hpp"
 
 class PrintStatement: public Statement
 {

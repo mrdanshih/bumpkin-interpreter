@@ -5,7 +5,7 @@
 #ifndef BUMPKININTERPRETER_ENDSTATEMENT_HPP
 #define BUMPKININTERPRETER_ENDSTATEMENT_HPP
 
-#include "Statement.hpp"
+#include "../Statement.hpp"
 
 class EndStatement: public Statement {
 public:

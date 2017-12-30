@@ -11,15 +11,17 @@
 #include <set>
 #include <list>
 #include "ProgramState.hpp"
-#include "LetStatement.hpp"
-#include "PrintStatement.hpp"
-#include "EndStatement.hpp"
-#include "GoToStatement.hpp"
-#include "IfStatement.hpp"
-#include "arithmetic/AddStatement.hpp"
-#include "arithmetic/SubStatement.hpp"
-#include "arithmetic/MultStatement.hpp"
-#include "arithmetic/DivStatement.hpp"
+#include "control_statements/LetStatement.hpp"
+#include "control_statements/PrintStatement.hpp"
+#include "control_statements/EndStatement.hpp"
+#include "control_statements/GoToStatement.hpp"
+#include "control_statements/GoSubStatement.hpp"
+#include "control_statements/ReturnStatement.hpp"
+#include "control_statements/IfStatement.hpp"
+#include "arithmetic_statements/AddStatement.hpp"
+#include "arithmetic_statements/SubStatement.hpp"
+#include "arithmetic_statements/MultStatement.hpp"
+#include "arithmetic_statements/DivStatement.hpp"
 #include "enumerations/RelationalOperator.hpp"
 
 class Parser

@@ -48,7 +48,7 @@ namespace {
                     new DivStatement(lvalue, rvalue));
         }
 
-        throw std::string("This shouldn't happen!");
+        throw std::string("This shouldn't happen! - TWO ARGUMENT STATEMENTS");
     }
 
     Statement* getOneArgumentStatement(std::string& command, std::string& rvalue) {
@@ -56,8 +56,14 @@ namespace {
             return (has_only_digits(rvalue) ? new PrintStatement(std::stoi(rvalue)) : new PrintStatement(rvalue));
 
         } else if (command == "GOTO") {
-            return (has_only_digits(rvalue) ? new GoToStatement((unsigned int) std::stoi(rvalue)) : new GoToStatement(rvalue));
+            return (has_only_digits(rvalue) ?
+                    new GoToStatement((unsigned int) std::stoi(rvalue)) : new GoToStatement(rvalue));
+
+        } else if (command == "GOSUB") {
+            return (has_only_digits(rvalue) ?
+                    new GoSubStatement((unsigned int) std::stoi(rvalue)) : new GoSubStatement(rvalue));
         }
+        throw std::string("This shouldn't happen! - ONE ARGUMENT STATEMENTS");
     }
 
     RelationalOperator getRelationalOperator(std::string& stringOperator) {
@@ -79,6 +85,7 @@ namespace {
         } else {
             return RelationalOperator::GREATER_EQ;
         }
+
     }
 
     IfStatement* generateIfStatement(std::string& value1, std::string& op,
@@ -123,9 +130,12 @@ namespace {
 
         } else if (command == "END" || command == ".") {
             return new EndStatement();
+
+        } else if (command == "RETURN") {
+            return new ReturnStatement();
         }
 
-        throw std::string("This shouldn't happen!");
+        throw std::string("This shouldn't happen! - TOKENS PARSER");
     }
 }
 

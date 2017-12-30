@@ -5,8 +5,8 @@
 #ifndef BUMPKININTERPRETER_LETSTATEMENT_HPP
 #define BUMPKININTERPRETER_LETSTATEMENT_HPP
 
-#include "Statement.hpp"
-#include "enumerations/VariableType.hpp"
+#include "../Statement.hpp"
+#include "../enumerations/VariableType.hpp"
 
 class LetStatement: public Statement
 {
