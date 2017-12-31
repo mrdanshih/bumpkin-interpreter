@@ -79,6 +79,7 @@ void Interpreter::runProgram(bool trace, std::istream* programStream) {
             statement->execute(state);
         } catch (BumpkinException& e) {
             std::cout << e.getMessage() << std::endl;
+            return;
         }
     }
 }
