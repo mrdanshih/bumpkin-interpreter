@@ -78,6 +78,8 @@ PRINTVARS: PRINT FOO
 ### The Bumpkin language
 Bumpkin programs consist of statements, one per line. All programs end with a . indicating the end of the Bumpkin program.
 Lines have line numbers associated with them (starting with 1) and optionally, a label preceeding them.
+Variables in Bumpkin take on integer values, and LET statements assign variables to given values. Uninitialized variables be default have a value of zero. Variables have names that begin with a letter and can include a sequence of letters and digits.
+
 Example:
 ```
         LET A 3
@@ -133,7 +135,7 @@ The following is a summary of supported statements in the Bumpkin language. In t
   </tr>
   <tr>
     <td>GOSUB <i>line</i></td>
-    <td>Temporarily jumps to the given <i>line</i> (which will be specified as either a line number or a label).  A RETURN statement will cause execution to jump back to the line following the GOSUB.</td>
+    <td>Temporarily jumps to the given <i>line</i> (which will be specified as either a line number or a label), entering the subroutine at the line.  A RETURN statement will cause execution to jump back to the line following the GOSUB.</td>
   </tr>
   <tr>
     <td>RETURN</td>
