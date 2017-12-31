@@ -1,0 +1,21 @@
+LET A 1
+LET B 10
+PRINT D
+LET C 1
+FOO:  ADD A C
+      GOSUB PRINTAB
+      LET D B
+      SUB D A
+      GOSUB BAR
+      GOSUB PRINTAB
+      IF A < B THEN FOO
+END
+BAR: IF D < 5 THEN CAR
+     RETURN
+CAR: MULT B 2
+     ADD C 1
+     MULT C C
+PRINTAB: PRINT A
+         PRINT B
+         RETURN
+.

@@ -140,7 +140,7 @@ namespace {
             return new ReturnStatement(lineNumber, statementText);
         }
 
-        throw std::string("This shouldn't happen! - TOKENS PARSER");
+        throw BumpkinException("Could not parse line " + std::to_string(lineNumber) + "Possible Syntax error!");
     }
 }
 

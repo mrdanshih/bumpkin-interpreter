@@ -3,7 +3,6 @@
 //
 
 #include "Interpreter.hpp"
-#include "BumpkinException.hpp"
 
 
 void Interpreter::run() {
@@ -20,31 +19,55 @@ void Interpreter::run() {
             tokens.push_back(token);
         }
 
-        if(tokens.size() == 2 || tokens.size() == 1 && tokens.at(0) == "EXIT") {
+        if(tokens.size() == 1 || tokens.size() == 2) {
             std::string& commandName = tokens.at(0);
 
             if(commandName == "EXIT") {
                 break;
             } else if(commandName == "RUN" || commandName == "TRACE") {
-                runProgram((commandName == "TRACE"), tokens.at(1));
+                std::ifstream programFile;
+                programFile.open(tokens.at(1));
+
+                if (programFile.fail()) {
+                    throw std::string("ERROR: File was not opened!");
+                }
+
+                runProgram((commandName == "TRACE"), &programFile);
+
+            } else if(commandName == "INTERPRET") {
+                std::stringstream programStream = takeProgramInput();
+                runProgram(false, &programStream);
+
             } else {
                 std::cout << "UNRECOGNIZED COMMAND" << std::endl;
             }
+
         } else {
             std::cout << "UNRECOGNIZED COMMAND" << std::endl;
         }
     }
 }
 
-void Interpreter::runProgram(bool trace, std::string& fileName) {
-    std::ifstream programFile;
-    programFile.open(fileName);
-    if(programFile.fail()) {
-        throw std::string("ERROR: File was not opened!");
+std::stringstream Interpreter::takeProgramInput() {
+    std::cout << "READY. Enter Bumpkin code line by line, finish with a . character" << std::endl;
+    std::stringstream resultStream;
+    std::string line;
+
+    while(std::getline(std::cin, line)) {
+        resultStream << line << "\n";
+
+        if(line == ".") {
+            break;
+        }
     }
 
+    return resultStream;
+}
+
+
+void Interpreter::runProgram(bool trace, std::istream* programStream) {
     Parser p;
-    ProgramState state = p.getProgramState(&programFile);
+    ProgramState state = p.getProgramState(programStream);
 
     while(!state.atProgramEnd()) {
         Statement* statement = state.getCurrentStatement();
@@ -56,7 +79,6 @@ void Interpreter::runProgram(bool trace, std::string& fileName) {
             statement->execute(state);
         } catch (BumpkinException& e) {
             std::cout << e.getMessage() << std::endl;
-            return;
         }
     }
 }

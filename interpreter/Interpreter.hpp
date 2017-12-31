@@ -14,7 +14,8 @@ public:
     void run();
 
 private:
-    void runProgram(bool trace, std::string& fileName);
+    void runProgram(bool trace, std::istream* programStream);
+    std::stringstream takeProgramInput();
 };
 
 #endif //BUMPKININTERPRETER_INTERPRETER_HPP
