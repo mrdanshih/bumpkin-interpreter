@@ -10,18 +10,18 @@
 
 class GoToStatement: public Statement {
 public:
-    //Set line to lineNumber
-    GoToStatement(unsigned int lineNumber);
+    //Set line to targetLineNumber
+    GoToStatement(unsigned int lineNumber, std::string statementText, unsigned int targetLineNumber);
 
     //Set line to label
-    GoToStatement(std::string lineLabel);
+    GoToStatement(unsigned int lineNumber, std::string statementText, std::string lineLabel);
 
     virtual void execute(ProgramState& state) const override;
 
 private:
     LineLabelType type;
-    unsigned int lineNumber;
-    std::string lineLabel;
+    unsigned int targetLineNumber;
+    std::string targetLineLabel;
 };
 
 

@@ -11,17 +11,17 @@
 class GoSubStatement: public Statement {
 public:
     //Subroutine jump to line number
-    GoSubStatement(unsigned int lineNumber);
+    GoSubStatement(unsigned int lineNumber, std::string statementText, unsigned int targetLineNumber);
 
     //Subroutine jump to line label
-    GoSubStatement(std::string lineLabel);
+    GoSubStatement(unsigned int lineNumber, std::string statementText, std::string targetLineLabel);
 
     virtual void execute(ProgramState& state) const override;
 
 private:
     LineLabelType type;
-    unsigned int lineNumber;
-    std::string lineLabel;
+    unsigned int targetLineNumber;
+    std::string targetLineLabel;
 };
 
 

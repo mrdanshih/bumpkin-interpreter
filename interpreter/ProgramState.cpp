@@ -38,7 +38,7 @@ int ProgramState::getVariableValue(const std::string& varName) {
     if(variablesIterator != variableValues.end()) {
         return variableValues.at(varName);
     }else{
-        throw std::out_of_range("No variable with name " + varName);
+        return 0;
     }
 }
 

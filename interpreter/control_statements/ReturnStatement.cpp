@@ -4,6 +4,11 @@
 
 #include "ReturnStatement.hpp"
 
+ReturnStatement::ReturnStatement(unsigned int lineNumber, std::string statementText)
+    :Statement(lineNumber, statementText)
+{
+
+}
 void ReturnStatement::execute(ProgramState &state) const {
     if(state.hasSavedProgramCounters()) {
         state.restoreMostRecentProgramCounter();

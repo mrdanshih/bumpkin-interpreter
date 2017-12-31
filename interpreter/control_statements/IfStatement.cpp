@@ -35,17 +35,21 @@ namespace {
     }
 }
 
-IfStatement::IfStatement(ComparisonValue leftValue, RelationalOperator compareOperator,
-                         ComparisonValue rightValue, std::string lineLabel)
-: leftVal{leftValue}, rightVal{rightValue}, compareOperator{compareOperator},
-  lineLabel{lineLabel}, lineLabelType{LABEL}
+IfStatement::IfStatement(unsigned int lineNumber, std::string statementText,
+                         ComparisonValue leftValue, RelationalOperator compareOperator,
+                         ComparisonValue rightValue, std::string targetLineLabel)
+: Statement(lineNumber, statementText),
+  leftVal{leftValue}, rightVal{rightValue}, compareOperator{compareOperator},
+  targetLineLabel{targetLineLabel}, lineLabelType{LABEL}
 {
 }
 
-IfStatement::IfStatement(ComparisonValue leftValue, RelationalOperator compareOperator,
-                         ComparisonValue rightValue, unsigned int lineNumber)
-        : leftVal{leftValue}, rightVal{rightValue}, compareOperator{compareOperator},
-          lineNumber{lineNumber}, lineLabelType{NUMBER}
+IfStatement::IfStatement(unsigned int lineNumber, std::string statementText,
+                         ComparisonValue leftValue, RelationalOperator compareOperator,
+                         ComparisonValue rightValue, unsigned int targetLineNumber)
+        : Statement(lineNumber, statementText),
+          leftVal{leftValue}, rightVal{rightValue}, compareOperator{compareOperator},
+          targetLineNumber{targetLineNumber}, lineLabelType{NUMBER}
 {
 }
 
@@ -55,9 +59,9 @@ void IfStatement::execute(ProgramState& state) const {
 
     if(getTruthValue(leftActual, rightActual, compareOperator)) {
         if(lineLabelType == LABEL) {
-            state.setProgramCounter(lineLabel);
+            state.setProgramCounter(targetLineLabel);
         } else {
-            state.setProgramCounter(lineNumber);
+            state.setProgramCounter(targetLineNumber);
         }
     } else {
         Statement::execute(state);

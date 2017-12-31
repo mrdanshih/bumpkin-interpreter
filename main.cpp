@@ -9,8 +9,8 @@
 
 int main() {
     try {
-        Interpreter interpreter{"/Users/danielshih/CLionProjects/BumpkinInterpreter/input_files/goto_test.txt"};
-        interpreter.runProgram();
+        Interpreter interpreter;
+        interpreter.run();
     } catch (std::string s) {
         std::cout << s << std::endl;
     }

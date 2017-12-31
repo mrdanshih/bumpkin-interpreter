@@ -11,10 +11,10 @@
 class DivStatement: public Statement {
 public:
     //Divide variable by a value.
-    DivStatement(std::string targetVariableName, int value);
+    DivStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value);
 
     //Divide variable by value OF variable
-    DivStatement(std::string targetVariableName, std::string otherVariable);
+    DivStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, std::string otherVariable);
 
     virtual void execute(ProgramState& state) const override;
 

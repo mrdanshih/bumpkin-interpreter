@@ -5,12 +5,14 @@
 #include "DivStatement.hpp"
 #include "../BumpkinException.hpp"
 
-DivStatement::DivStatement(std::string targetVariableName, int value):
+DivStatement::DivStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value):
+        Statement(lineNumber, statementText),
         rValueType{VALUE}, targetVariableName{targetVariableName}, divisorValue{value}
 {
 }
 
-DivStatement::DivStatement(std::string targetVariableName, std::string otherVariable):
+DivStatement::DivStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, std::string otherVariable):
+        Statement(lineNumber, statementText),
         rValueType{VARIABLE}, targetVariableName{targetVariableName},
         otherVariableName{otherVariable}
 {

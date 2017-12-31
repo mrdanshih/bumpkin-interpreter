@@ -12,10 +12,10 @@
 class AddStatement: public Statement {
 public:
     //Add value to a variable
-    AddStatement(std::string targetVariableName, int value);
+    AddStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value);
 
     //Add value OF variable to a variable
-    AddStatement(std::string targetVariableName, std::string otherVariable);
+    AddStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, std::string otherVariable);
 
     virtual void execute(ProgramState& state) const override;
 

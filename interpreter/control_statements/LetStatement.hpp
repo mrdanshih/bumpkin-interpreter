@@ -12,10 +12,10 @@ class LetStatement: public Statement
 {
 public:
     //Set a variable to an int
-    LetStatement(std::string variableName, int value);
+    LetStatement(unsigned int lineNumber, std::string statementText, std::string variableName, int value);
 
     //Set a variable to the value of another variable
-    LetStatement(std::string variableName, std::string otherVariable);
+    LetStatement(unsigned int lineNumber, std::string statementText, std::string variableName, std::string otherVariable);
 
     virtual void execute(ProgramState& state) const override;
 

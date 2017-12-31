@@ -4,14 +4,18 @@
 
 #include "AddStatement.hpp"
 
-AddStatement::AddStatement(std::string targetVariableName, int value):
-    rValueType{VALUE}, targetVariableName{targetVariableName}, addendValue{value}
+AddStatement::AddStatement(unsigned int lineNumber, std::string statementText,
+                           std::string targetVariableName, int value)
+        : Statement(lineNumber, statementText), rValueType{VALUE},
+          targetVariableName{targetVariableName}, addendValue{value}
 {
 }
 
-AddStatement::AddStatement(std::string targetVariableName, std::string otherVariable):
-    rValueType{VARIABLE}, targetVariableName{targetVariableName},
-    otherVariableName{otherVariable}
+AddStatement::AddStatement(unsigned int lineNumber, std::string statementText,
+                           std::string targetVariableName, std::string otherVariable)
+        : Statement(lineNumber, statementText),
+        rValueType{VARIABLE}, targetVariableName{targetVariableName},
+        otherVariableName{otherVariable}
 {
 }
 

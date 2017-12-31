@@ -11,10 +11,10 @@
 
 class Interpreter {
 public:
-    Interpreter(const std::string& fileName);
-    void runProgram();
+    void run();
+
 private:
-    std::ifstream programFile;
+    void runProgram(bool trace, std::string& fileName);
 };
 
 #endif //BUMPKININTERPRETER_INTERPRETER_HPP

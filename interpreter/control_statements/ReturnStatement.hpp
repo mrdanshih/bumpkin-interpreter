@@ -10,6 +10,7 @@
 
 class ReturnStatement: public Statement {
 public:
+    ReturnStatement(unsigned int lineNumber, std::string statementText);
     virtual void execute(ProgramState& state) const override;
 };
 

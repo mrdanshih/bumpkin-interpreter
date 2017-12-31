@@ -12,8 +12,8 @@
 class PrintStatement: public Statement
 {
 public:
-    PrintStatement(int value);
-    PrintStatement(std::string variableName);
+    PrintStatement(unsigned int lineNumber, std::string statementText, int value);
+    PrintStatement(unsigned int lineNumber, std::string statementText, std::string variableName);
     virtual void execute(ProgramState& state) const override;
 private:
     std::string variableName;

@@ -11,10 +11,10 @@
 class MultStatement: public Statement {
 public:
     //Multiply variable by a value
-    MultStatement(std::string targetVariableName, int value);
+    MultStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value);
 
     //Add value OF variable to a variable
-    MultStatement(std::string targetVariableName, std::string otherVariable);
+    MultStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, std::string otherVariable);
 
     virtual void execute(ProgramState& state) const override;
 

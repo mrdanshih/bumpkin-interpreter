@@ -5,11 +5,13 @@
 #include "PrintStatement.hpp"
 #include <iostream>
 
-PrintStatement::PrintStatement(int value): value{value}, itemType{VALUE}
+PrintStatement::PrintStatement(unsigned int lineNumber, std::string statementText, int value):
+        Statement(lineNumber, statementText), value{value}, itemType{VALUE}
 {
 }
 
-PrintStatement::PrintStatement(std::string variableName):
+PrintStatement::PrintStatement(unsigned int lineNumber, std::string statementText, std::string variableName):
+        Statement(lineNumber, statementText),
         variableName{variableName}, itemType{VARIABLE}
 {
 }

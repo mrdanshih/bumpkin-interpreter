@@ -4,12 +4,14 @@
 
 #include "SubStatement.hpp"
 
-SubStatement::SubStatement(std::string targetVariableName, int value):
+SubStatement::SubStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value):
+        Statement(lineNumber, statementText),
         rValueType{VALUE}, targetVariableName{targetVariableName}, subtrahendValue{value}
 {
 }
 
-SubStatement::SubStatement(std::string targetVariableName, std::string otherVariable):
+SubStatement::SubStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, std::string otherVariable):
+        Statement(lineNumber, statementText),
         rValueType{VARIABLE}, targetVariableName{targetVariableName},
         otherVariableName{otherVariable}
 {

@@ -9,6 +9,7 @@
 
 class EndStatement: public Statement {
 public:
+    EndStatement(unsigned int lineNumber, std::string statementText);
     virtual void execute(ProgramState& state) const override;
 };
 

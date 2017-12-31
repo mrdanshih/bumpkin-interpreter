@@ -11,10 +11,10 @@
 class SubStatement: public Statement {
 public:
     //Subtract value from variable
-    SubStatement(std::string targetVariableName, int value);
+    SubStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value);
 
     //Subtract value OF variable from a variable
-    SubStatement(std::string targetVariableName, std::string otherVariable);
+    SubStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, std::string otherVariable);
 
     virtual void execute(ProgramState& state) const override;
 

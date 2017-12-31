@@ -5,12 +5,16 @@
 #include "LetStatement.hpp"
 
 
-LetStatement::LetStatement(std::string variableName, int value):
+LetStatement::LetStatement(unsigned int lineNumber, std::string statementText,
+                           std::string variableName, int value):
+        Statement(lineNumber, statementText),
         rValueType{VALUE}, variableName{variableName}, variableValue{value}
 {
 }
 
-LetStatement::LetStatement(std::string variableName, std::string otherVariable):
+LetStatement::LetStatement(unsigned int lineNumber, std::string statementText,
+                           std::string variableName, std::string otherVariable):
+        Statement(lineNumber, statementText),
     rValueType{VARIABLE}, variableName{variableName}, otherVariableName{otherVariable}
 {
 }

@@ -12,13 +12,15 @@ class Statement
 {
 
 public:
+    Statement(unsigned int lineNumber, std::string statementText);
     virtual void execute(ProgramState& state) const;
     virtual ~Statement() = default;
-    virtual std::string trace();
+
+    friend std::ostream& operator << (std::ostream& out, const Statement& statement);
 
 
 private:
-    int lineNumber;
+    unsigned int lineNumber;
     std::string statementText;
 
 };

@@ -13,11 +13,13 @@
 class IfStatement: public Statement {
 public:
     //Compare value of two variables
-    IfStatement(ComparisonValue leftValue, RelationalOperator compareOperator,
-                ComparisonValue rightValue, std::string lineLabel);
+    IfStatement(unsigned int lineNumber, std::string statementText,
+                ComparisonValue leftValue, RelationalOperator compareOperator,
+                ComparisonValue rightValue, std::string targetLineLabel);
 
-    IfStatement(ComparisonValue leftValue, RelationalOperator compareOperator,
-                ComparisonValue rightValue, unsigned int lineNumber);
+    IfStatement(unsigned int lineNumber, std::string statementText,
+                ComparisonValue leftValue, RelationalOperator compareOperator,
+                ComparisonValue rightValue, unsigned int targetLineNumber);
 
     virtual void execute(ProgramState& state) const override;
 
@@ -27,8 +29,8 @@ private:
     RelationalOperator compareOperator;
 
     LineLabelType lineLabelType;
-    unsigned int lineNumber;
-    std::string lineLabel;
+    unsigned int targetLineNumber;
+    std::string targetLineLabel;
 };
 
 

@@ -5,14 +5,16 @@
 #include "MultStatement.hpp"
 
 
-MultStatement::MultStatement(std::string targetVariableName, int value):
-    rValueType{VALUE}, targetVariableName{targetVariableName}, multiplicandValue{value}
+MultStatement::MultStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value):
+        Statement(lineNumber, statementText),
+        rValueType{VALUE}, targetVariableName{targetVariableName}, multiplicandValue{value}
 {
 }
 
-MultStatement::MultStatement(std::string targetVariableName, std::string otherVariable):
-    rValueType{VARIABLE}, targetVariableName{targetVariableName},
-    otherVariableName{otherVariable}
+MultStatement::MultStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, std::string otherVariable):
+        Statement(lineNumber, statementText),
+        rValueType{VARIABLE}, targetVariableName{targetVariableName},
+        otherVariableName{otherVariable}
 {
 }
 

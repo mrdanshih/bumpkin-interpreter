@@ -4,13 +4,15 @@
 
 #include "GoSubStatement.hpp"
 
-GoSubStatement::GoSubStatement(std::string lineLabel):
-        type{LABEL}, lineLabel{lineLabel}
+GoSubStatement::GoSubStatement(unsigned int lineNumber, std::string statementText, std::string targetLineLabel):
+        Statement(lineNumber, statementText),
+        type{LABEL}, targetLineLabel{targetLineLabel}
 {
 }
 
-GoSubStatement::GoSubStatement(unsigned int lineNumber):
-        type{NUMBER}, lineNumber{lineNumber}
+GoSubStatement::GoSubStatement(unsigned int lineNumber, std::string statementText, unsigned int targetLineNumber):
+        Statement(lineNumber, statementText),
+        type{NUMBER}, targetLineNumber{targetLineNumber}
 {
 }
 
@@ -19,8 +21,8 @@ void GoSubStatement::execute(ProgramState &state) const {
     state.saveCurrentProgramCounter();
 
     if(type == LABEL) {
-        state.setProgramCounter(lineLabel);
+        state.setProgramCounter(targetLineLabel);
     } else {
-        state.setProgramCounter(lineNumber);
+        state.setProgramCounter(targetLineNumber);
     }
 }
