@@ -6,7 +6,7 @@
 #define BUMPKININTERPRETER_RETURNSTATEMENT_HPP
 
 #include "../Statement.hpp"
-#include "../BumpkinException.hpp"
+#include "../XtraBasicException.hpp"
 
 class ReturnStatement: public Statement {
 public:

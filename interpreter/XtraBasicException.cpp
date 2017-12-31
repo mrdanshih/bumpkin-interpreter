@@ -2,7 +2,7 @@
 // Created by Daniel Shih on 12/18/17.
 //
 
-#include "BumpkinException.hpp"
+#include "XtraBasicException.hpp"
 
 BumpkinException::BumpkinException(std::string message): message{message}
 {

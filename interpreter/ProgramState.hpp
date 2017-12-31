@@ -10,7 +10,7 @@
 #include <vector>
 #include <stack>
 #include <iostream>
-#include "BumpkinException.hpp"
+#include "XtraBasicException.hpp"
 
 class Statement;
 

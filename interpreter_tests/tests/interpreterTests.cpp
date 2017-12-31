@@ -8,7 +8,7 @@
 #include <Users/danielshih/CLionProjects/BumpkinInterpreter/interpreter/arithmetic_statements/SubStatement.hpp>
 #include <Users/danielshih/CLionProjects/BumpkinInterpreter/interpreter/arithmetic_statements/MultStatement.hpp>
 #include <Users/danielshih/CLionProjects/BumpkinInterpreter/interpreter/arithmetic_statements/DivStatement.hpp>
-#include <Users/danielshih/CLionProjects/BumpkinInterpreter/interpreter/BumpkinException.hpp>
+#include <Users/danielshih/CLionProjects/BumpkinInterpreter/interpreter/XtraBasicException.hpp>
 #include <Users/danielshih/CLionProjects/BumpkinInterpreter/interpreter/Parser.hpp>
 #include "gtest/gtest.h"
 

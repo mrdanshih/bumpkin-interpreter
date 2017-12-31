@@ -3,7 +3,7 @@
 //
 
 #include "Interpreter.hpp"
-#include "BumpkinException.hpp"
+#include "XtraBasicException.hpp"
 
 
 void Interpreter::run() {
