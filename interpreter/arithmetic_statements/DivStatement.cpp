@@ -3,7 +3,7 @@
 //
 
 #include "DivStatement.hpp"
-#include "../XtraBasicException.hpp"
+#include "../BumpkinException.hpp"
 
 DivStatement::DivStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value):
         Statement(lineNumber, statementText),
