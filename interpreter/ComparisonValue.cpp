@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 12/28/17.
-//
-
 #include "ComparisonValue.hpp"
 
 ComparisonValue::ComparisonValue(int constant):

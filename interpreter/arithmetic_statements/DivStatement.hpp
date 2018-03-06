@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 12/18/17.
-//
-
 #ifndef BUMPKININTERPRETER_DIVSTATEMENT_HPP
 #define BUMPKININTERPRETER_DIVSTATEMENT_HPP
 

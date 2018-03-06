@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 12/18/17.
-//
-
 #include "DivStatement.hpp"
 #include "../BumpkinException.hpp"
 #include "../ProgramState.hpp"

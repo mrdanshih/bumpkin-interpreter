@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 12/18/17.
-//
-
 #include "MultStatement.hpp"
 #include "../ProgramState.hpp"
 

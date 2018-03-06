@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 12/16/17.
-//
-
 #include "AddStatement.hpp"
 #include "../ProgramState.hpp"
 

@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 12/28/17.
-//
-
 #ifndef BUMPKININTERPRETER_COMPARISONVALUE_HPP
 #define BUMPKININTERPRETER_COMPARISONVALUE_HPP
 
@@ -9,7 +5,8 @@
 #include "enumerations/VariableType.hpp"
 
 class ComparisonValue {
-    // For if statement. Stores either an integer or a string and contains the type of var
+    // For if-statement (which supports constants or variable names)
+    // Stores either an integer or a string and contains the type of value used to compare
 public:
     ComparisonValue(int constant);
     ComparisonValue(std::string variable);

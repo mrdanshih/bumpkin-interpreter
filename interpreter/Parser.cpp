@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 9/7/17.
-//
-
 #include "Parser.hpp"
 #include <iostream>
 
@@ -159,7 +155,7 @@ ProgramState Parser::getProgramState(std::istream* inputStream) {
             std::vector<std::string> statementTokens = getTokensForStatement(line);
 
             // Based on tokens[0], make a new statement.
-            // Maybe here check for label by checking tokens[0] ending in ':'
+            // Check for label by checking tokens[0] ending in ':'
             std::string& firstToken = statementTokens.at(0);
             if(firstToken.at(firstToken.size() - 1) == ':') {
                 // associate line label

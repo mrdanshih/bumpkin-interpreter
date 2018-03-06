@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 12/25/17.
-//
-
 #include "GoToStatement.hpp"
 #include "../ProgramState.hpp"
 

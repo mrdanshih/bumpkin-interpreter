@@ -1,9 +1,4 @@
-//
-// Created by Daniel Shih on 9/7/17.
-//
-
 #include "Interpreter.hpp"
-
 
 void Interpreter::run() {
     while(true) {
@@ -24,15 +19,20 @@ void Interpreter::run() {
 
             if(commandName == "EXIT") {
                 break;
+
             } else if(commandName == "RUN" || commandName == "TRACE") {
-                std::ifstream programFile;
-                programFile.open(tokens.at(1));
+                if(tokens.size() < 2) {
+                    std::cout << "ERROR: Missing filename argument." << std::endl;
+                } else {
+                    std::ifstream programFile;
+                    programFile.open(tokens.at(1));
 
-                if (programFile.fail()) {
-                    throw std::string("ERROR: File was not opened!");
+                    if (programFile.fail()) {
+                        std::cout << std::string("ERROR: File was not opened!") << std::endl;
+                    } else {
+                        runProgram((commandName == "TRACE"), &programFile);
+                    }
                 }
-
-                runProgram((commandName == "TRACE"), &programFile);
 
             } else if(commandName == "INTERPRET") {
                 std::stringstream programStream = takeProgramInput();
@@ -79,7 +79,6 @@ void Interpreter::runProgram(bool trace, std::istream* programStream) {
             statement->execute(state);
         } catch (BumpkinException& e) {
             std::cout << e.getMessage() << std::endl;
-            return;
         }
     }
 }

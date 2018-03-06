@@ -1,7 +1,3 @@
-//
-// Created by Daniel Shih on 12/28/17.
-//
-
 #include "IfStatement.hpp"
 #include "../ProgramState.hpp"
 #include <iostream>
