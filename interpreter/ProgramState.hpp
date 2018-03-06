@@ -10,10 +10,9 @@
 #include <vector>
 #include <stack>
 #include <iostream>
+#include "Statement.hpp"
 #include "BumpkinException.hpp"
-
 class Statement;
-
 class ProgramState
 {
 public:

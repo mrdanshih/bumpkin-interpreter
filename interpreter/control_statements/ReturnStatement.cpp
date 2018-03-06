@@ -3,6 +3,7 @@
 //
 
 #include "ReturnStatement.hpp"
+#include "../ProgramState.hpp"
 
 ReturnStatement::ReturnStatement(unsigned int lineNumber, std::string statementText)
     :Statement(lineNumber, statementText)

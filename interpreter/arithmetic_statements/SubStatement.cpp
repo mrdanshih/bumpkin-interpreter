@@ -3,6 +3,7 @@
 //
 
 #include "SubStatement.hpp"
+#include "../ProgramState.hpp"
 
 SubStatement::SubStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value):
         Statement(lineNumber, statementText),

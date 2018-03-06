@@ -3,6 +3,7 @@
 //
 
 #include "LetStatement.hpp"
+#include "../ProgramState.hpp"
 
 
 LetStatement::LetStatement(unsigned int lineNumber, std::string statementText,

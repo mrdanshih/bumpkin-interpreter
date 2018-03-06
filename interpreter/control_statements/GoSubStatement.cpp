@@ -3,6 +3,7 @@
 //
 
 #include "GoSubStatement.hpp"
+#include "../ProgramState.hpp"
 
 GoSubStatement::GoSubStatement(unsigned int lineNumber, std::string statementText, std::string targetLineLabel):
         Statement(lineNumber, statementText),

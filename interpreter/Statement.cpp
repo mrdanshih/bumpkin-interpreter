@@ -3,6 +3,7 @@
 //
 
 #include "Statement.hpp"
+#include "ProgramState.hpp"
 
 Statement::Statement(unsigned int lineNumber, std::string statementText)
     : lineNumber{lineNumber}, statementText{statementText}

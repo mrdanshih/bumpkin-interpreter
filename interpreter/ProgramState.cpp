@@ -3,6 +3,7 @@
 //
 
 #include "ProgramState.hpp"
+#include "Statement.hpp"
 
 
 ProgramState::ProgramState(): programCounter{1}{
@@ -13,6 +14,7 @@ ProgramState::ProgramState(): programCounter{1}{
 
 ProgramState::~ProgramState() {
     // Need to delete all the dynamically allocated Statements
+ //   std::cout << "DESTRUCTION" << std::endl;
     for(Statement* statement: statements) {
         delete statement;
     }

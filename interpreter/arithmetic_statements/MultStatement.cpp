@@ -3,7 +3,7 @@
 //
 
 #include "MultStatement.hpp"
-
+#include "../ProgramState.hpp"
 
 MultStatement::MultStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value):
         Statement(lineNumber, statementText),

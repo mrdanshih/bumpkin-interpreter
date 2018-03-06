@@ -4,6 +4,7 @@
 
 #include "DivStatement.hpp"
 #include "../BumpkinException.hpp"
+#include "../ProgramState.hpp"
 
 DivStatement::DivStatement(unsigned int lineNumber, std::string statementText, std::string targetVariableName, int value):
         Statement(lineNumber, statementText),

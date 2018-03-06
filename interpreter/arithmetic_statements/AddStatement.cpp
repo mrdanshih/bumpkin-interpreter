@@ -3,6 +3,7 @@
 //
 
 #include "AddStatement.hpp"
+#include "../ProgramState.hpp"
 
 AddStatement::AddStatement(unsigned int lineNumber, std::string statementText,
                            std::string targetVariableName, int value)

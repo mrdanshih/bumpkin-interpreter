@@ -3,6 +3,7 @@
 //
 
 #include "GoToStatement.hpp"
+#include "../ProgramState.hpp"
 
 GoToStatement::GoToStatement(unsigned int lineNumber, std::string statementText, std::string lineLabel)
         : Statement(lineNumber, statementText),

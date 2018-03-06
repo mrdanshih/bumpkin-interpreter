@@ -3,6 +3,7 @@
 //
 
 #include "PrintStatement.hpp"
+#include "../ProgramState.hpp"
 #include <iostream>
 
 PrintStatement::PrintStatement(unsigned int lineNumber, std::string statementText, int value):

@@ -6,7 +6,7 @@
 #define BUMPKININTERPRETER_STATEMENT_HPP
 
 #include <string>
-#include "ProgramState.hpp"
+class ProgramState;
 
 class Statement
 {
